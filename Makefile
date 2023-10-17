@@ -4,7 +4,7 @@ LIBS = -lm
 SRCS = dns2tcp.c
 OBJS = $(SRCS:.c=.o)
 MAIN = dns2tcp
-DESTDIR = /usr/local/bin
+DESTDIR = ./
 
 EVCFLAGS = -O2 -fno-strict-aliasing
 EVSRCFILE = libev/ev.c
