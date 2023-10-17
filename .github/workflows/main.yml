@@ -48,14 +48,11 @@ jobs:
 
       - name: Package distribution
         run: |
-          # Perform packaging steps here
-          # For example, create a tarball or zip file
+            mkdir dist
 
+            
       - name: Publish distribution
-        uses: actions/upload-release-asset@v1
+        uses: actions/upload-artifact@v2
         with:
-          asset_path: |
-            # Specify the path to the packaged distribution file
-          release_id: ${{ github.event.release.id }}
-          asset_name: dns2tcp-distribution
-
+          name: dns2tcp-distribution
+          path: dist/
