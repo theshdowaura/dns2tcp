@@ -1,4 +1,4 @@
-name: Build Architecture and Platform Files
+name: Build and Publish
 on:
   workflow_dispatch:
   push:
@@ -6,7 +6,7 @@ on:
       - main
 
 jobs:
-  build_architecture_platform_files:
+  build_publish:
     runs-on: ubuntu-latest
 
     steps:
@@ -46,9 +46,16 @@ jobs:
 
       # Add more build steps for other platforms as needed
 
-      - name: Archive artifacts
-        uses: actions/upload-artifact@v2
+      - name: Package distribution
+        run: |
+          # Perform packaging steps here
+          # For example, create a tarball or zip file
+
+      - name: Publish distribution
+        uses: actions/upload-release-asset@v1
         with:
-          name: architecture-platform-files
-          path: |
-            dns2tcp
+          asset_path: |
+            # Specify the path to the packaged distribution file
+          release_id: ${{ github.event.release.id }}
+          asset_name: dns2tcp-distribution
+
